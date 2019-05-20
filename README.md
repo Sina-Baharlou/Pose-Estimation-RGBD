@@ -12,7 +12,7 @@ This project demonstrates the usage of the least squares technique for estimatio
 
 > **Requirements:**
 
-> - Python > 2.7 </br>
+> - Python > 3.6 </br>
 > - OpenCV 3 </br>
 > - NumPy </br>
 > - MatplotLib</br>

@@ -1,76 +1,78 @@
-# -- SLAM Project by Sina moayed Baharlou (1672657)
+"""
+3D pose estimation of an RGB-D camera using least squares technique
+Created on Aug 2016
+Updated on May 2019
+By Sina M.Baharlou (Sina.baharlou@gmail.com)
+Web page: www.sinabaharlou.com
+"""
 
-import cv2 
-import numpy as np
-from math import *
+# -- Import required libraries --
 import os
 
 
+# -- Io Handler class --
 class IoHandler:
 
-	# -- constructor 
-	def __init__(self,path):
-		self.__path=path;		# -- working path
-		self.__list=list();		# -- file list
-		self.__current_index=0;		# -- current index
+    # -- Constructor --
+    def __init__(self, path):
+        self.__path = path  # -- working path
+        self.__list = list()  # -- file list
+        self.__current_index = 0  # -- current index
 
-	# -- clear file list	
-	def clear_list(self):
-		self.__list=list();
-		self.__current_index=0;
+    # -- Clear file list --
+    def clear_list(self):
+        self.__list = list()
+        self.__current_index = 0
 
-	def load_files(self,extension,sorted=False):
-		
-		
-		file_count=0;
-		
-		# -- loop through all files
-		for file in os.listdir(self.__path):
-        		if file.endswith(extension):
-            			self.__list.append(file)
-				file_count+=1;
-		
-		# -- sort the files if it's needed
-		if sorted==True:
-			self.__list.sort();
+    # -- Load all files --
+    def load_files(self, extension, l_sorted=False):
+        file_count = 0
 
-		return file_count;
+        # -- Loop through all files --
+        for file in os.listdir(self.__path):
+            if file.endswith(extension):
+                self.__list.append(file)
+                file_count += 1
 
+        # -- Sort the files if it's needed --
+        if l_sorted:
+            self.__list.sort()
 
-	def next_file(self,append_path=True):
-	
-		# -- check if it has reached the end
-		if self.__current_index>=len(self.__list):
-			return None;
-	
-		# -- get the filename
-		filename=self.__list[self.__current_index];
-		
-		# -- append with path if it's needed
-		if append_path==True:
-			filename=self.__path+filename;
-		
-		# -- go to the next file
-		self.__current_index+=1;
-		return filename;
+        return file_count
 
+    # -- Get the next file --
+    def next_file(self, append_path=True):
+        # -- Check if it has reached the end --
+        if self.__current_index >= len(self.__list):
+            return None
 
-	def file_at(self,file_index,append_path=True):
+        # -- Get the filename --
+        filename = self.__list[self.__current_index]
 
-		# -- check if it's in the range
-		if file_index>=len(self.__list):
-			return None;
+        # -- Append with path if it's needed --
+        if append_path:
+            filename = self.__path + filename
 
-		# -- get the filename
-		filename=self.__list[file_index];
-		
-		# -- append with path if it's needed
-		if append_path==True:
-			filename=self.__path+filename;
-		
-		# -- go to the next file
-		return filename;
+        # -- Go to the next file --
+        self.__current_index += 1
+        return filename
 
+    # -- Get file at--
+    def file_at(self, file_index, append_path=True):
+        # -- Check if it's in the range --
+        if file_index >= len(self.__list):
+            return None
 
-	def get_list(self):
-		return self.__list;
+        # -- Get the filename --
+        filename = self.__list[file_index]
+
+        # -- Append with path if it's needed --
+        if append_path:
+            filename = self.__path + filename
+
+        # -- Go to the next file --
+        return filename
+
+    # -- Get file list --
+    def get_list(self):
+        return self.__list
