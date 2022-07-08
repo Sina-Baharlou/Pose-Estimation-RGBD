@@ -13,6 +13,8 @@ technique for estimation of an RGBD camera, in particular the images which have 
 The following figure shows the result of two sample images. Extracted feature points and their correspondences are depicted on the left, and the final relative position and orientation of the camera is illustrated on the right.
 <p align="center"><img src="docs/slam-results.png" width="640" title="Results"></p>
 
+### Adviser 
+Prof. Giorgo Grisetti
 
 ### Code
 Please make sure you have the the following requirements installed:
