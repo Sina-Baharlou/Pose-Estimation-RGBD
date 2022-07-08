@@ -14,7 +14,7 @@ The following figure shows the result of two sample images. Extracted feature po
 <p align="center"><img src="docs/slam-results.png" width="640" title="Results"></p>
 
 ### Adviser 
-Prof. Giorgo Grisetti
+Prof. Giorgio Grisetti
 
 ### Code
 Please make sure you have the the following requirements installed:
